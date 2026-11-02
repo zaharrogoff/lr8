@@ -7,23 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.sharedflowdemo.ui.theme.SharedFlowDemoTheme
+import com.example.lr8.ui.theme.Lr8Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SharedFlowDemoTheme {
+            Lr8Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    ScreenSetup(Modifier.padding(innerPadding))
                 }
             }
         }
@@ -31,17 +27,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun ScreenSetup(modifier: Modifier = Modifier) {
+    MainScreen(modifier)
+}
+
+@Composable
+fun MainScreen(modifier: Modifier = Modifier) {
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    SharedFlowDemoTheme {
-        Greeting("Android")
+    Lr8Theme {
+        MainScreen()
     }
 }
